@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.testing.R
-import com.example.testing.common.presentation.util.TestTags
+import com.example.testing.common.presentation.util.Constant
 import com.example.testing.features.note_list.presentation.viewmodel.NoteListViewModel
 
 @Composable
@@ -91,7 +91,7 @@ fun NoteListScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { onNavigate() },
-                modifier = Modifier.testTag(TestTags.ADD_NOTE_FAB)
+                modifier = Modifier.testTag(Constant.ADD_NOTE_FAB)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,

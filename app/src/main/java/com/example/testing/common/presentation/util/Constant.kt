@@ -1,6 +1,6 @@
 package com.example.testing.common.presentation.util
 
-object TestTags {
+object Constant {
 
     // NoteListScreen
     const val ADD_NOTE_FAB = "ADD_NOTE_FAB"
@@ -16,4 +16,10 @@ object TestTags {
     const val SEARCH_IMAGE_DIALOG = "SEARCH_IMAGE_DIALOG"
     const val SEARCH_IMAGE_TEXT_FIELD = "SEARCH_IMAGE_TEXT_FIELD"
     const val PICKED_IMAGE = "PICKED_IMAGE"
+
+
+    // API
+    const val BASE_URL = "https://pixabay.com/"
+    const val API_KEY = "45171383-5af5f325d192d597253ff9c8a"
+
 }

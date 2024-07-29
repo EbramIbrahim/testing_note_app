@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Size
-import com.example.testing.common.presentation.util.TestTags
+import com.example.testing.common.presentation.util.Constant
 import com.example.testing.features.notes.domain.models.Note
 
 @Composable
@@ -95,7 +95,7 @@ fun NoteListItem(
             modifier = Modifier
                 .clickable { onDelete() },
             imageVector = Icons.Default.Clear,
-            contentDescription = TestTags.DELETE_NOTE + note.title,
+            contentDescription = Constant.DELETE_NOTE + note.title,
             tint = MaterialTheme.colorScheme.onPrimary,
         )
 

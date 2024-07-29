@@ -1,7 +1,9 @@
-package com.example.testing.features.notes.di
+package com.example.testing.common.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.testing.common.presentation.util.Constant.BASE_URL
+import com.example.testing.features.add_note.data.repository.remote.ImageApi
 import com.example.testing.features.add_note.domain.usecase.UpsertNoteUC
 import com.example.testing.features.note_list.domain.usecase.DeleteNoteUC
 import com.example.testing.features.note_list.domain.usecase.GetNoteListUC
@@ -13,11 +15,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object NoteAppModule {
 
     @Provides
     @Singleton
@@ -29,6 +33,17 @@ object DatabaseModule {
             NoteDatabase::class.java,
             "note_db"
         ).build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideImageApi(): ImageApi {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ImageApi::class.java)
     }
 
     @Provides

@@ -5,7 +5,7 @@ import androidx.test.filters.SmallTest
 import com.example.testing.features.notes.data.repository.entity.NoteDao
 import com.example.testing.features.notes.data.repository.entity.NoteDatabase
 import com.example.testing.features.notes.data.repository.entity.NoteEntity
-import com.example.testing.features.notes.di.DatabaseModule
+import com.example.testing.common.di.NoteAppModule
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 
 @HiltAndroidTest
-@UninstallModules(DatabaseModule::class)
+@UninstallModules(NoteAppModule::class)
 @SmallTest
 class TestNoteDao {
 
