@@ -2,7 +2,7 @@ package com.example.testing.features.note_list.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.testing.features.note_list.MainCoroutineRule
-import com.example.testing.features.note_list.domain.repository.FakeNoteRepository
+import com.example.testing.common.data.repository.FakeNoteRepository
 import com.example.testing.features.note_list.domain.usecase.DeleteNoteUC
 import com.example.testing.features.note_list.domain.usecase.GetNoteListUC
 import com.google.common.truth.Truth.assertThat

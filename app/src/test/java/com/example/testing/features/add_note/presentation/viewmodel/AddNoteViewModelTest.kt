@@ -1,9 +1,11 @@
 package com.example.testing.features.add_note.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.example.testing.common.data.repository.FakeImageRepository
 import com.example.testing.features.add_note.domain.usecase.UpsertNoteUC
+import com.example.testing.common.data.repository.FakeNoteRepository
+import com.example.testing.features.add_note.domain.usecase.SearchImagesUC
 import com.example.testing.features.note_list.MainCoroutineRule
-import com.example.testing.features.note_list.domain.repository.FakeNoteRepository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -16,15 +18,21 @@ class AddNoteViewModelTest {
     @get:Rule
     var instantTaskEntity = InstantTaskExecutorRule()
 
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
 
     private lateinit var fakeNoteRepository: FakeNoteRepository
+    private lateinit var fakeImageRepository: FakeImageRepository
     private lateinit var addNoteViewModel: AddNoteViewModel
 
     @Before
     fun setUp() {
         fakeNoteRepository = FakeNoteRepository()
+        fakeImageRepository = FakeImageRepository()
         val upsertNoteUC = UpsertNoteUC(fakeNoteRepository)
-        addNoteViewModel = AddNoteViewModel(upsertNoteUC)
+        val searchImageUc = SearchImagesUC(fakeImageRepository)
+        addNoteViewModel = AddNoteViewModel(upsertNoteUC, searchImageUc)
     }
 
 
@@ -70,6 +78,30 @@ class AddNoteViewModelTest {
         )
 
         assertThat(isInserted).isTrue()
+    }
+
+    @Test
+    fun `search images with invalid query, return error`() = runTest {
+        addNoteViewModel.searchImages("")
+        coroutineRule.dispatcher.scheduler.advanceUntilIdle()
+        assertThat(addNoteViewModel.addNoteState.value.imageList.isEmpty()).isTrue()
+    }
+
+    @Test
+    fun `search images with a valid query, return network error`() = runTest {
+        fakeImageRepository.setShouldReturnError(true)
+        addNoteViewModel.searchImages("query")
+        coroutineRule.dispatcher.scheduler.advanceUntilIdle()
+
+        assertThat(addNoteViewModel.addNoteState.value.imageList.isEmpty()).isTrue()
+    }
+
+    @Test
+    fun `search images with a valid query, return success`() = runTest {
+        addNoteViewModel.searchImages("query")
+        coroutineRule.dispatcher.scheduler.advanceUntilIdle()
+
+        assertThat(addNoteViewModel.addNoteState.value.imageList.isNotEmpty()).isTrue()
     }
 
 

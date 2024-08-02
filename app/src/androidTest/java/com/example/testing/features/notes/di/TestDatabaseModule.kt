@@ -2,6 +2,8 @@ package com.example.testing.features.notes.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.testing.features.add_note.domain.repository.IImageRepository
+import com.example.testing.features.add_note.domain.usecase.SearchImagesUC
 import com.example.testing.features.add_note.domain.usecase.UpsertNoteUC
 import com.example.testing.features.note_list.domain.usecase.DeleteNoteUC
 import com.example.testing.features.note_list.domain.usecase.GetNoteListUC
@@ -53,6 +55,14 @@ object TestDatabaseModule {
         noteRepository: INoteRepository
     ): UpsertNoteUC {
         return UpsertNoteUC(noteRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchImagesUC(
+        imageRepository: IImageRepository
+    ): SearchImagesUC {
+        return SearchImagesUC(imageRepository)
     }
 
 }

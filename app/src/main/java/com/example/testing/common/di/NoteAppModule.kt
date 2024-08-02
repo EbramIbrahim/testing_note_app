@@ -3,7 +3,10 @@ package com.example.testing.common.di
 import android.content.Context
 import androidx.room.Room
 import com.example.testing.common.presentation.util.Constant.BASE_URL
+import com.example.testing.features.add_note.data.repository.ImageRepository
 import com.example.testing.features.add_note.data.repository.remote.ImageApi
+import com.example.testing.features.add_note.domain.repository.IImageRepository
+import com.example.testing.features.add_note.domain.usecase.SearchImagesUC
 import com.example.testing.features.add_note.domain.usecase.UpsertNoteUC
 import com.example.testing.features.note_list.domain.usecase.DeleteNoteUC
 import com.example.testing.features.note_list.domain.usecase.GetNoteListUC
@@ -77,6 +80,22 @@ object NoteAppModule {
         noteRepository: INoteRepository
     ): UpsertNoteUC {
         return UpsertNoteUC(noteRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideImageRepository(
+        api: ImageApi
+    ): IImageRepository {
+        return ImageRepository(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSearchImagesNoteUC(
+        imageRepository: IImageRepository
+    ): SearchImagesUC {
+        return SearchImagesUC(imageRepository)
     }
 
 }

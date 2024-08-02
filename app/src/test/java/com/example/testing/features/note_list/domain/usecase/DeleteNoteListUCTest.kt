@@ -1,7 +1,7 @@
 package com.example.testing.features.note_list.domain.usecase
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.testing.features.note_list.domain.repository.FakeNoteRepository
+import com.example.testing.common.data.repository.FakeNoteRepository
 import com.example.testing.features.notes.domain.models.Note
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.test.runTest

@@ -1,4 +1,4 @@
-package com.example.testing.features.note_list.domain.repository
+package com.example.testing.common.data.repository
 
 import com.example.testing.features.notes.domain.models.Note
 import com.example.testing.features.notes.domain.repository.INoteRepository

@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.testing.features.add_note.presentation.ui.AddNoteScreen
 
 import com.example.testing.features.note_list.presentation.ui.NoteListScreen
 
@@ -19,8 +20,12 @@ fun NavGraph(modifier: Modifier = Modifier) {
         composable<Screen.NoteList> {
             NoteListScreen(onNavigate = {
                 navController.navigate(Screen.AddNote)
-            }
-            )
+            })
+        }
+        composable<Screen.AddNote> {
+            AddNoteScreen(onSave = {
+                navController.navigate(Screen.NoteList)
+            })
         }
 
     }
