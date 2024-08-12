@@ -2,7 +2,7 @@ package com.example.testing.features.notes.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.testing.common.data.repository.FakeImageRepository
+import com.example.testing.repository.FakeImageRepository
 import com.example.testing.common.data.repository.FakeNoteRepository
 import com.example.testing.common.presentation.util.Constant.BASE_URL
 import com.example.testing.features.add_note.data.repository.remote.ImageApi

@@ -77,7 +77,7 @@ fun AddNoteScreen(
                 .clip(RoundedCornerShape(16.dp))
                 .background(MaterialTheme.colorScheme.primaryContainer)
                 .clickable { addNoteViewModel.onAction(AddNoteActions.UpdateImageDialogVisibility) }
-                .testTag(Constant.NOTE_IMAGE),
+                .testTag(Constant.NOTE_IMAGE + addNoteState.imageUrl),
             model = ImageRequest
                 .Builder(context)
                 .data(addNoteState.imageUrl)
