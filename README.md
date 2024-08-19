@@ -1,4 +1,2 @@
 # Testing Note 
-## UnitTest
-## IntegrationTest
-## End-to-End Test
+## UnitTest-IntegrationTest-End-to-End Test
