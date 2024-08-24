@@ -38,7 +38,6 @@ object NoteAppModule {
         ).build()
     }
 
-
     @Provides
     @Singleton
     fun provideImageApi(): ImageApi {
